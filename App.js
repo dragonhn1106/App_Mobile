@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import AppRouter from './src/router/appRouter'
-import { View, Text } from 'react-native'
-
-
+import { NavigationContainer } from '@react-navigation/native';
+import { View } from 'react-native';
 
 export default class App extends Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-      
-        <AppRouter />
-      </View>
+       
+          <NavigationContainer>
+          <AppRouter />
+        </NavigationContainer>
     )
   }
 }

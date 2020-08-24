@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
-import Home from '../components/Home'
-
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeComponent from '../components/Home/HomeComponent';
+import HeaderComponent  from '../common/HeaderComponent'
 
 export default class AppRouter extends Component {
   render() {
-    const Tab = createBottomTabNavigator();
+    const TabBottom = createBottomTabNavigator();
+    const HomeStack = createStackNavigator();
+    const StackHomePage = ()=>(
+      <HomeStack.Navigator
+        
+      >
+        <HomeStack.Screen name="Home" component={HomeComponent} 
+        options={{
+          title: "Trang chu",
+          header: (props)=> (
+            <HeaderComponent {...props}/>
+        ),
+      
+      }}
+
+        
+        />
+
+        
+       
+    </HomeStack.Navigator>
+    )
     return (
-      <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Settings" component={Home} />
-      </Tab.Navigator>
-    </NavigationContainer>
+      
+        <TabBottom.Navigator>
+          <TabBottom.Screen name="Home" component={StackHomePage}  options={{title: "Trang chu"}}/>
+          <TabBottom.Screen name="Settings" component={HomeComponent} />
+        </TabBottom.Navigator>
+
     )
   }
 }
